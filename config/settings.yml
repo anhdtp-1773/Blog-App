@@ -1,0 +1,11 @@
+image_header: "https://findmate.app/brand/findmate/img/icon-32.png?v=2019-03-29"
+image_block_2: "https://cache.findmate-cdn.com/image/landing/cover/7ec67222570a53ab15b5ffbec594e779.jpg?v=2018-04-20"
+footer_link: "https://www.facebook.com/jesse31396"
+max_string_length: 255
+min_text_length: 127
+image_size: "300x300"
+size_picture: 5
+# min_name_length: 2
+# max_name_length: 100
+limit_post_home: 3
+per_page: 10
