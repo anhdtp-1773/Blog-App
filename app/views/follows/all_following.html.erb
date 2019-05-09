@@ -1,0 +1,17 @@
+<h1><%= t".all_following" %></h1>
+<div class="main-content">
+  <ul>
+    <% @all_following.each do |f| %>
+      <li>
+        <span>
+          <% if f.image.attached? %>
+          <%= image_tag((f.image), class:"img-haha") %><% end %>
+        </span>
+        <span><%= link_to f.nick_name, user_path(f) %></span>
+        <p><%= t".total_entried" %><%= f.entries.count %></p>
+        <span><%= t".total_following" %><%= f.followers.count %></span>
+        <span><%= t".total_follower" %><%= f.follows.count %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

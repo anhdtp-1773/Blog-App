@@ -2,12 +2,15 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :image
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   scope :by_lastest, ->{order created_at: :desc}
+  scope :follower, ->(id){where id: id}
+
+  acts_as_followable
+  acts_as_follower
 
   def self.from_omniauth(access_token)
     data = access_token.info

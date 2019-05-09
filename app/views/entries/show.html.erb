@@ -22,43 +22,61 @@
           </div>
         </div>
       </div>
+      <p>
+
+      </p>
       <div class="col-md-12">
       <div class="clearfix"></div>
-      <hr>
-      <div class="feed-activity-list col-md-6">
-        <% if user_signed_in? %>
-        <div id="commentform" class="commentform">
-           <%= render "comments/form" %>
-        </div>
-        <% end %>
-        <div id="commentdiv" class="commentdiv">
-        <%= render "comments/comment" %>
-        </div>
+      <div>
+        <p>Writen by: <%=link_to @entry.user.name, user_path(@entry.user) %></p>
+        <%= @user.followers.count %><%= t(".follower") %>
+        <%= @user.followers_by_type_count(@user) %><%= t(".following") %>
       </div>
-      <div class="related-product col-md-12">
-        <h2 class="title18 font-bold text-uppercase"><%= t ".related" %></h2>
-        <div class="product-slider">
-        <% @other_entries.each do |other_entries| %>
-          <div class="post-716 product">
-            <div class="item-product item-product-grid">
-              <div class="product-thumb">
-                <%= link_to entry_path(other_entries) do %>
-                  <%= image_tag other_entries.image if other_entries.image.attached? %>
-                <% end %>
-                <div class="product-extra-link text-center">
-                <%= link_to t(".detail"), entry_url(other_entries), class: "button addcart-link shop-button bg-color" %>
+      <div class="clearfix"></div>
+      <div>
+        <% if !user_signed_in? %>
+        <p>
+          <%=link_to t(".to_follow_this_user_sign_in"), new_user_session_path, method: :get, data: {confirm: t(".please_log_in")}, class: "btn btn-success" %>
+          </p>
+        <% end %>
+      </div>
+      <hr>
+        <div class="feed-activity-list col-md-6">
+          <% if user_signed_in? %>
+          <div id="commentform" class="commentform">
+             <%= render "comments/form" %>
+          </div>
+          <% end %>
+          <div id="commentdiv" class="commentdiv">
+          <%= render "comments/comment" %>
+          </div>
+        </div>
+        <div class="related-product col-md-12">
+          <h2 class="title18 font-bold text-uppercase"><%= t ".related" %></h2>
+          <div class="product-slider">
+            <% @other_entries.each do |other_entries| %>
+              <div class="post-716 product">
+                <div class="item-product item-product-grid">
+                  <div class="product-thumb">
+                    <%= link_to entry_path(other_entries) do %>
+                      <%= image_tag other_entries.image if other_entries.image.attached? %>
+                    <% end %>
+                    <div class="product-extra-link text-center">
+                    <%= link_to t(".detail"), entry_url(other_entries), class: "button addcart-link shop-button bg-color" %>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h3 class="title18 text-uppercase product-title dosis-font font-bold">
+                      <%= link_to other_entries.title, entry_url(other_entries) %>
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <div class="product-info">
-                <h3 class="title18 text-uppercase product-title dosis-font font-bold">
-                  <%= link_to other_entries.title, entry_url(other_entries) %>
-                </h3>
-              </div>
-            </div>
+            <% end %>
           </div>
-        <% end %>
         </div>
       </div>
+      <%= paginate @other_entries %>
     </div>
   </div>
 </div>

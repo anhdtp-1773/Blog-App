@@ -10,4 +10,5 @@ size_picture: 5
 limit_post_home: 3
 per_page: 6
 display_text: 160
-
+status_active: 1
+a_post_home: 1

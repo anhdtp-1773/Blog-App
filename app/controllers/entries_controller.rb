@@ -1,8 +1,9 @@
 class EntriesController < ApplicationController
   before_action :load_entry, only: %i(edit update destroy show)
+  before_action :load_user, only: :show
 
   def index
-    @entries = Entry.user_entries(current_user).page(params[:page]).per Settings.per_page
+    @entries = Entry.by_lastest.user_entries(current_user).page(params[:page]).per Settings.per_page
   end
 
   def new
@@ -42,12 +43,19 @@ class EntriesController < ApplicationController
   end
 
   def show
-    @other_entries = Entry.other_entries(@entry).limit Settings.per_page
+    @other_entries = Entry.other_entries(@entry).page(params[:page]).per Settings.limit_post_home
     @comments = @entry.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
   end
 
   private
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+    flash[:error] = t(".user_not_found")
+    redirect_to root_path
+  end
 
   def entry_params
     params.require(:entry).permit Entry::ENTRY_PARAMS

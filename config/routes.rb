@@ -17,4 +17,13 @@ Rails.application.routes.draw do
   resources :entries do
     resources :comments
   end
+
+  resources :follows do
+    collection do
+      post "follow"
+      post "unfollow"
+      get "all_follows"
+      get "all_following"
+    end
+  end
 end

@@ -20,6 +20,9 @@
           <li id="nav-menu-item-836" class="main-menu-item">
             <%= link_to t(".my_entry"), user_entries_path(current_user), class: "menu-link sub-menu-link" %>
           </li>
+          <li id="nav-menu-item-836" class="main-menu-item">
+            <%= link_to t(".my_details"), user_path(current_user), class: "menu-link sub-menu-link" %>
+          </li>
           <li class="nav-item dropdown">
             <li class="dropdown">
               <%= link_to "#", :"data-toggle" => "dropdown", :class => "dropdown-toggle" do %>
