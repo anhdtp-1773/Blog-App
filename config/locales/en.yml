@@ -1,33 +1,125 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      admin: "Admin"
+      blog_app: "Blog App"
+      log_out: "Log out"
+      create_new_entry: "Create new entry"
+      my_entry: "My entry"
+    footer:
+      design_by: "Design by"
+    admin:
+      header:
+        title: "Title"
+        home: "Home"
+      sidebar:
+        manage_content: "Manage Content"
+        users: "Users"
+        entries: "Entries"
+        comments: "Comments"
+  admin:
+    users:
+      index:
+        stt: "STT"
+        avatar: "Avatar"
+        user_name: "User name"
+        nick_name: "Nick name"
+        created_at: "Created at"
+        action: "Action"
+        delete: "delete"
+        confirm: "Confirm"
+      destroy:
+        deleted: "Delete successfuly!"
+        delete_failed: "Delete failed"
+        user_not_found: "User not found"
+    entries:
+      index:
+        create_new_entry: "Create new entry"
+        stt: "STT"
+        entries: "Entries"
+        picture: "Picture"
+        body: "Body"
+        status: "Status"
+        created_at: "Created at"
+        action: "Action"
+        edit: "Edit"
+        delete: "delete"
+        read_more: "Read more"
+        confirm: "Confirm"
+      new:
+        title: "title"
+        body: "body"
+        create_new_entry: "Create new entry"
+        add_new_entry: "Add new entry"
+        create_my_entry: "Create my entry"
+        public: "Public"
+        pending: "Pending"
+      create:
+        created_success: "Create successfuly!"
+        create_unsuccess: "Create unsuccess"
+        entry_updated: "Update successfuly!"
+        entry_deleted: "Delete successfuly"
+        delete_failed: "Delete failed!"
+      edit:
+        save_change: "Save change"
+        edit_entry: "Edit entry"
+      update:
+        entry_updated: "Entry updated!"
+      destroy:
+        deleted: "Delete successfuly!"
+        delete_failed: "Delete failed"
+        entry_not_found: "Entry not found"
+    comments:
+      index:
+        comments: "Comments"
+        entry: "Entry"
+        stt: "STT"
+        content: "Content"
+        user: "User"
+        action: "Action"
+        delete: "Delete"
+        created_at: "Create at"
+        confirm: "Confirm"
+      destroy:
+        deleted: "Delete successfuly!"
+        delete_failed: "Delete failed"
+  entries:
+    index:
+      create_new_enentry_updatedtry: "Create new entry"
+      stt: "STT"
+      entries: "Entries"
+      picture: "Picture"
+      body: "Body"
+      status: "Status"
+      created_at: "Created at"
+      action: "Action"
+      edit: "Edit"
+      confirm: "Confirm"
+      delete: "delete"
+      read_more: "Read more"
+    new:
+      title: "title"
+      body: "body"
+      create_new_entry: "Create new entry"
+      add_new_entry: "Add new entry"
+      create_my_entry: "Create my entry"
+      public: "Public"
+      pending: "Pending"
+    create:
+      created_success: "Create successfuly!"
+      create_unsuccess: "Create unsuccess"
+      entry_updated: "Update successfuly!"
+      entry_deleted: "Delete successfuly"
+      delete_failed: "Delete failed!"
+  statis_pages:
+    hot_blog:
+      read_more: "Read more"
+  comments:
+    form:
+      create: "Create"
+      update: "Update"
+    comment:
+      format_time: "format time"
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are you sure?"

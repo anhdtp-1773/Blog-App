@@ -1,0 +1,14 @@
+<ul class="nav" id="side-menu">
+  <li>
+    <h4 class="dashboard"><%= t ".manage_content" %></h4>
+  </li>
+  <li>
+    <%= link_to t(".users"), admin_users_path %>
+  </li>
+  <li>
+    <%= link_to t(".entries"), admin_entries_path %>
+  </li>
+  <li>
+    <%= link_to t(".comments"), admin_comments_path %>
+  </li>
+</ul>

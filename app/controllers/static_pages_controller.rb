@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    # @entry = Entry.most_likes.limit Settings.limit_post_home
-    # @entries = Entry.all_posts.page(params[:page]).per Settings.per_page
+    @entry = Entry.by_lastest.limit Settings.limit_post_home
+    @entries = Entry.all_entries.page(params[:page]).per Settings.per_page
   end
 
   def about_us; end

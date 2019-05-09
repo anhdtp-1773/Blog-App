@@ -1,0 +1,46 @@
+<% provide(:title, t(".entries")) %>
+<div class="row">
+  <div class="col-lg-12">
+    <!-- search -->
+    <%= link_to t(".create_new_entry"), new_admin_entry_path, class: "btn btn-success" %>
+    <table width="100%" class="table table-bordered table-hover" id="datatable">
+      <thead>
+        <tr>
+          <th><%= t ".stt" %></th>
+          <th><%= t ".entries" %></th>
+          <th><%= t ".body" %></th>
+          <th><%= t ".status" %></th>
+          <th><%= t ".picture" %></th>
+          <th><%= t ".user_by" %></th>
+          <th><%= t ".created_at" %></th>
+          <th colspan="2"><%= t ".action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @entries.each_with_index do |entry,index| %>
+        <tr>
+          <td><%= create_index params[:page], index, Settings.per_page %></td>
+          <td><%= entry.title %></td>
+          <td>
+            <%= truncate entry.body, length: Settings.display_text%>
+            <%= link_to (t ".read_more"), "#" %>
+          </td>
+          <td><%= entry.status %></td>
+          <td><%= image_tag entry.image if entry.image.attached? %></td>
+          <td><%= entry.user.name %></td>
+          <td><%= entry.created_at %></td>
+          <td>
+            <%= link_to t(".edit"), edit_admin_entry_path(entry.id),
+              class: "btn btn-warning" %>
+          </td>
+          <td>
+            <%= link_to t(".delete"), admin_entry_path(entry.id),
+            method: :delete, data: {confirm: t(".confirm")}, class: "btn btn-danger" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @entries %>
+  </div>
+</div>

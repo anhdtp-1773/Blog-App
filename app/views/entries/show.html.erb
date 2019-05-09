@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="main-wrap-shop col-md-12 col-sm-8">
+    <div id="product-724">
+      <div class="product-detail">
+        <div class="row">
+          <div class="col-md-5 col-sm-12 col-xs-12">
+            <div class="detail-gallery">
+              <%= image_tag @entry.image if @entry.image.attached? %>
+            </div>
+          </div>
+          <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="summary detail-info">
+              <h2 class="title24 font-bold text-uppercase"><%= @entry.title %></h2>
+              <p class="price"></p>
+            </div>
+            <div class="des ">
+              <h2 class="title18 font-bold text-uppercase title-single-related-post"></h2>
+              <div>
+                <p><%= @entry.body %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+      <div class="clearfix"></div>
+      <hr>
+      <div class="feed-activity-list col-md-6">
+        <% if user_signed_in? %>
+        <div id="commentform" class="commentform">
+           <%= render "comments/form" %>
+        </div>
+        <% end %>
+        <div id="commentdiv" class="commentdiv">
+        <%= render "comments/comment" %>
+        </div>
+      </div>
+      <div class="related-product col-md-12">
+        <h2 class="title18 font-bold text-uppercase"><%= t ".related" %></h2>
+        <div class="product-slider">
+        <% @other_entries.each do |other_entries| %>
+          <div class="post-716 product">
+            <div class="item-product item-product-grid">
+              <div class="product-thumb">
+                <%= link_to entry_path(other_entries) do %>
+                  <%= image_tag other_entries.image if other_entries.image.attached? %>
+                <% end %>
+                <div class="product-extra-link text-center">
+                <%= link_to t(".detail"), entry_url(other_entries), class: "button addcart-link shop-button bg-color" %>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="title18 text-uppercase product-title dosis-font font-bold">
+                  <%= link_to other_entries.title, entry_url(other_entries) %>
+                </h3>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

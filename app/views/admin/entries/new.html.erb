@@ -1,0 +1,25 @@
+<% provide(:title, t(".create_new_entry")) %>
+<% provide(:button_text, t(".create_my_entry")) %>
+<h1><%= t ".add_new_entry" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @entry] do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_area :title, placeholder: t(".title") %>
+
+      <%= f.label :body %>
+      <%= f.text_area :body, placeholder: t(".body") %>
+
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+
+      <%= f.label :status %>
+      <%= f.select :status, options_for_select(show_status, selected: @entry.status) %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <%= f.submit t(".create_my_entry"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

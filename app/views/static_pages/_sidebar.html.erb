@@ -1,0 +1,15 @@
+<ul class="nav-bar">
+  <li>
+    <h4 class="dashboard"><%= t ".my_entries_list" %></h4>
+  </li>
+  <ul>
+    <% @entries.each_with_index do |entry, index| %>
+      <span>
+        <%= create_index params[:page], index, Settings.per_page %>
+      </span>
+      <span>
+        <%= entry.title %>
+      </span>
+    <% end %>
+  </ul>
+</ul>
