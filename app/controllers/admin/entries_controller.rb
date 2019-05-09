@@ -1,20 +1,21 @@
-class Admin::EntriesController < ApplicationController
+class Admin::EntriesController < Admin::BasesController
   before_action :verify_admin!, only: %i(create index destroy)
-  before_action :load_entry, :logged_in_user, only: %i(edit update destroy)
+  before_action :load_entry, only: %i(edit update destroy)
 
   def index
-    @entries = Entry.search(params[:term]).page(params[:page]).per Settings.per_page
+    @entries = Entry.by_lastest.page(params[:page]).per Settings.per_page
   end
 
   def new
-    @entries = Entry.new
+    @entry = Entry.new
   end
 
   def create
-    @entries = Entry.new entry_params
-    if @entries.save
-      flash[:success] = t(".created")
-      redirect_to admin_posts_path
+    # byebug
+    @entry = Entry.new entry_params
+    if @entry.save
+      flash[:success] = t(".created_success")
+      redirect_to admin_entries_path
     else
       flash[:error] = t(".create_unsuccess")
       render :new
@@ -34,23 +35,25 @@ class Admin::EntriesController < ApplicationController
 
   def destroy
     if @entry.destroy
+      NotifierMailer.warning_entry(@entry).deliver
       flash[:success] = t(".entry_deleted")
-      redirect_to admin_posts_path
+      redirect_to admin_entries_path
     else
       flash[:error] = t(".delete_failed")
-      redirect_to admin_posts_path
+      redirect_to admin_entries_path
     end
   end
 
   private
 
   def entry_params
-    params.require(:entries).permit Entry::ENTRY_PARAMS
+    params.require(:entry).permit Entry::ENTRY_PARAMS
   end
 
   def load_entry
     @entry = Entry.find_by id: params[:id]
     return if @entry
     flash[:error] = t(".entry_not_found")
-    redirect_to admin_posts_path
+    redirect_to admin_entries_path
   end
+end

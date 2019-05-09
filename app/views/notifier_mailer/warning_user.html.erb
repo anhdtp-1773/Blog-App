@@ -1,0 +1,17 @@
+<h1>Notifier#Delete-account</h1>
+<h3>Blog App</h3>
+<p>
+    Dear <b><%= @user.name %></b>,
+</p>
+
+<p>
+  This is a email to notify that your account has been deleted!
+</p>
+<p>
+  We find that you are a fake account, or that you violate our account management rules, forcing us to delete your account.
+  <p>
+    If you want to continue using our service, you should create another account at <%= link_to "Blog App", "#" %>
+  </p>
+  <p>Sorry!</p>
+</p>
+

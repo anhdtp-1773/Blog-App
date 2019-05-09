@@ -3,22 +3,40 @@
     <%= link_to t(".blog_app"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t(".sign_in"), new_user_session_path %></li>
-        <li><%= link_to t(".sign_up"), new_user_registration_path %></li>
-        <li class="nav-item dropdown">
-          <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.is_admin? %>
+          <li class="nav-item">
+            <%= link_to t(".admin"), admin_users_path %>
+          </li>
+          <li id="nav-menu-item-836" class="main-menu-item">
+            <%= link_to t(".create_new_entry"), new_admin_entry_path(current_user), class: "menu-link sub-menu-link" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <% if user_signed_in? && !current_user.is_admin %>
+            <li id="nav-menu-item-836" class="main-menu-item">
+              <%= link_to t(".create_new_entry"), new_user_entry_path(current_user), class: "menu-link sub-menu-link" %>
+            </li>
+          <% end %>
+          <li id="nav-menu-item-836" class="main-menu-item">
+            <%= link_to t(".my_entry"), user_entries_path(current_user), class: "menu-link sub-menu-link" %>
+          </li>
+          <li class="nav-item dropdown">
             <li class="dropdown">
               <%= link_to "#", :"data-toggle" => "dropdown", :class => "dropdown-toggle" do %>
-                <%= t ".username" %> <b class="caret"></b>
+                <%= current_user.name %> <b class="caret"></b>
               <% end %>
               <ul class="dropdown-menu">
                 <li>
+                  <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
                   <%= link_to t(".log_out"), destroy_user_session_path, method: :delete %>
                 </li>
               </ul>
             </li>
-          <% end %>
-        </li>
+          </li>
+        <% else %>
+          <li><%= link_to t(".log_in"), new_user_session_path %></li>
+          <li><%= link_to t(".register"), new_user_registration_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

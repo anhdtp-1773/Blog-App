@@ -1,0 +1,24 @@
+<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <%= link_to t(".title"), admin_path, class: "navbar-brand"%>
+    <%= link_to t(".home"), root_path, class: "navbar-brand"%>
+  </div>
+  <ul class="nav navbar-top-links navbar-right">
+    <% if signed_in? %>
+      <li class="nav-item dropdown">
+        <li class="dropdown">
+          <%= link_to "#", :"data-toggle" => "dropdown", :class => "dropdown-toggle" do %>
+            <%= current_user.name %> <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li>
+              <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+              <%= link_to t(".log_out"), destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+      </li>
+    <% end %>
+  </ul>
+  <div class="clearfix"></div>
+</nav>

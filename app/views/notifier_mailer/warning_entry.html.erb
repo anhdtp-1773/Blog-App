@@ -1,0 +1,16 @@
+<h1>Notifier#Your-Entry</h1>
+<h3>Blog App</h3>
+<p>
+    Dear <b><%= @entry.user.name %></b>,
+</p>
+
+<p>
+  This is a email to notify that your entry has been deleted!
+</p>
+<p>
+  We found that your entry was copyright infringement or not in accordance with our rules. So it has been deleted.
+  <p>
+    If you want to continue using our service, you should create another account at <%= link_to "Blog App - create entry", "#" %>
+  </p>
+  <p>Sorry!</p>
+</p>
