@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @entry = Entry.by_lastest.limit Settings.limit_post_home
+    @entry = Entry.by_lastest.limit Settings.a_post_home
     @entries = Entry.all_entries.page(params[:page]).per Settings.per_page
   end
 

@@ -5,7 +5,8 @@ en:
       blog_app: "Blog App"
       log_out: "Log out"
       create_new_entry: "Create new entry"
-      my_entry: "My entry"
+      my_entry: "My entries"
+      my_details: "My details"
     footer:
       design_by: "Design by"
     admin:
@@ -29,7 +30,7 @@ en:
         delete: "delete"
         confirm: "Confirm"
       destroy:
-        deleted: "Delete successfuly!"
+        deleted: "Delete successfuly! A email was sent to notify to own's account."
         delete_failed: "Delete failed"
         user_not_found: "User not found"
     entries:
@@ -66,7 +67,7 @@ en:
       update:
         entry_updated: "Entry updated!"
       destroy:
-        deleted: "Delete successfuly!"
+        entry_deleted: "Delete successfuly! A email was sent to notify to own's this entry."
         delete_failed: "Delete failed"
         entry_not_found: "Entry not found"
     comments:
@@ -111,7 +112,15 @@ en:
       entry_updated: "Update successfuly!"
       entry_deleted: "Delete successfuly"
       delete_failed: "Delete failed!"
-  statis_pages:
+    load_user:
+      user_not_found: "User not found!"
+      entry_not_found: "Entry not found!"
+    show:
+      to_follow_this_user_sign_in: "follow this user to see the own's newest entries"
+      please_log_in: "Please log in!"
+    entry_home:
+      read_more: "Read more"
+  static_pages:
     hot_blog:
       read_more: "Read more"
   comments:
@@ -123,3 +132,31 @@ en:
       edit: "Edit"
       delete: "Delete"
       sure: "Are you sure?"
+  follows:
+    all_following:
+      total_entried: "Total entried: "
+      total_following: "Total following: "
+      total_follower: ",    Total follower: "
+      all_following: "All following"
+    all_follows:
+      total_entried: "Total entried: "
+      total_following: "Total following: "
+      total_follower: ",    Total follower: "
+      all_follower: "All followers"
+    follow_form:
+      follower: "follower"
+      followers: "followers"
+      unfollow: "unfollow"
+      following: "following"
+  users:
+    load_user:
+      user_not_found: "User not found!"
+    show:
+      not_found_any_entry: "Not found any entry!"
+  notifier_mailer:
+    dear: "Dear, "
+  mailers:
+    notifier_mailer:
+      warning_account: "Warning: Your account was deleted!"
+      warning_entry: "Warning: Your entry was deleted!"
+      notify_follow: "Notification: You was followed by"

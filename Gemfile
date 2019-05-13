@@ -26,6 +26,7 @@ gem "bcrypt", "3.1.12"
 gem "kaminari"
 gem "kaminari-bootstrap"
 gem "image_processing"
+gem "acts_as_follower", github: "tcocca/acts_as_follower", branch: "master"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

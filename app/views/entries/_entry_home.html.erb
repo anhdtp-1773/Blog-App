@@ -1,28 +1,30 @@
-<div class="wpb_column column_container col-sm-12">
+<div class="wpb_column column_container">
   <div class="vc_column-inner blogs">
     <% @entries.each do |p| %>
-    <div class="owl-item active">
-      <div class="item">
-        <div class="item-post item-post-default style2">
-          <div class="post-thumb banner-advs zoom-image overlay-image">
-            <%= link_to entries_path(p) do %>
-              <%= image_tag entry.image if entry.image.attached? %>
-            <% end %>
-          </div>
-          <div class="post-info">
-            <h5 class="title14 text-uppercase font-bold post-title">
-              <%= link_to p.title, entries_path(p) %>
-            </h5>
-            <ul class="list-inline-block post-meta-data">
-              <li><i aria-hidden="true" class="fa fa-comment color"></i>
-               <%= count_comments(p) %> <%= t ".comments" %></li>
-               <li><i aria-hidden="true" class="fa fa-comment color"></i>
-            </ul>
-            <%= link_to t(".read_more"), entry_path(p), class: "readmore text-uppercase btn btn-success" %>
+      <div class="owl-item active">
+        <div class="item">
+          <div class="item-post item-post-default style2">
+            <div class="post-thumb banner-advs zoom-image overlay-image">
+              <%= link_to entry_path(p) do %>
+                <%= image_tag p.image if p.image.attached? %>
+              <% end %>
+            </div>
+            <div class="post-info">
+              <h5 class="title14 text-uppercase font-bold post-title min-title">
+                <%= link_to p.title, entry_path(p) %>
+              </h5>
+              <ul class="list-inline-block post-meta-data">
+                <li><i aria-hidden="true" class="fa fa-comment color"></i>
+                 <%= count_comments(p) %> <%= t ".comments" %></li>
+                 <li><i aria-hidden="true" class="fa fa-comment color"></i>
+              </ul>
+              <%= link_to t(".read_more"), entry_path(p), class: "readmore text-uppercase btn btn-success" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
+  <div class="clearfix"></div>
+  <%= paginate @entries %>
 </div>

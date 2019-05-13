@@ -11,7 +11,6 @@ class Admin::EntriesController < Admin::BasesController
   end
 
   def create
-    # byebug
     @entry = Entry.new entry_params
     if @entry.save
       flash[:success] = t(".created_success")

@@ -1,0 +1,9 @@
+<div class="follow-button-area" id="user-<%=@user.id%>" style="float: left">
+  <% if current_user.following? @user %>
+    <%= button_to t(".unfollow"), {action: :unfollow, controller: :follows, id: @user.id}, method: "post", class: "btn btn-secondary btn-unfollow header-align", remote: true %>
+  <% elsif current_user != @user %>
+    <%= button_to t(".following"), {action: :follow, controller: :follows, id: @user.id}, method: "post", class: "btn btn-primary btn-unfollow header-align", remote: true %>
+  <% end %>
+  <%= @user.followers.count %><%=link_to t(".follower"), {action: :all_follows, controller: :follows, id: @user.id}, method: "get" %>
+  <%= @user.follows.count %><%= link_to t(".following"), {action: :all_following, controller: :follows, id: @user.id}, method: "get" %>
+</div>

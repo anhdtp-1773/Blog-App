@@ -1,0 +1,24 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-12">
+    <section class="user_info">
+      <h1>
+        <%= @user.nick_name %>
+      </h1>
+      <div>
+        <%= image_tag @user.image if @user.image.attached? %>
+        <% if user_signed_in? %>
+          <div id="follow_user">
+            <%= render :partial => "follows/follow_form", :locals => {:user => @user} %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </aside>
+  <div class="clearfix"></div>
+  <div>
+    <ul>
+      <%= render "entries/show" %>
+    </ul>
+  </div>
+</div>

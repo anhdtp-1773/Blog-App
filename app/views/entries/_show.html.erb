@@ -1,0 +1,13 @@
+<% @entries.each do |e| %>
+  <li>
+    <span>
+      <%= image_tag((e.image if e.image.attached?), class:"img-haha") %>
+    </span>
+    <span><%= link_to e.title, entry_path(e) %></span>
+    <p class="timestamp">
+      <%= t ".post" %>
+      <%= time_ago_in_words(e.created_at) %>
+      <%= t ".ago" %>
+    </p>
+  </li>
+<% end %>

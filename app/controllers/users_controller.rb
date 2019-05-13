@@ -1,14 +1,19 @@
-class UsersController < Devise::SessionsController
-  def create
-    super
+class UsersController < ApplicationController
+  before_action :load_user
+
+  def show
+    @entries = Entry.where(user_id: @user.id)
+    return if @entries
+    flash[:error] = t(".not_found_any_entry")
+    redirect_to root_path
   end
 
-  protected
-    def after_sign_in_path_for(resource)
-      if current_user.information_user
-        root_path
-      else
-        new_information_user_path
-      end
-    end
+  private
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+    flash[:error] = t(".user_not_found")
+    redirect_to root_path
+  end
 end
